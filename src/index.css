@@ -1,0 +1,28 @@
+:root { font-family: system-ui, sans-serif; color: #1b1f2a; background: #f6f5f0; }
+* { box-sizing: border-box; }
+body { margin: 0; }
+header { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 16px 24px; background: #1b1f2a; color: #f6f5f0; }
+header h1 { margin: 0; font-size: 20px; }
+nav { display: flex; gap: 8px; }
+nav button { background: transparent; color: #f6f5f0; border: 1px solid #f6f5f0; border-radius: 8px; padding: 8px 14px; font-weight: 600; cursor: pointer; }
+nav button.active { background: #e8a33d; border-color: #e8a33d; color: #1b1f2a; }
+main { padding: 24px; max-width: 1200px; margin: 0 auto; }
+.status { color: #6a7179; }
+.error { color: #b3261e; }
+.muted { color: #6a7179; font-size: 14px; margin: 0; }
+.breed-select { padding: 8px; border: 1px solid #e3e1d8; border-radius: 8px; font: inherit; margin-bottom: 16px; min-width: 240px; }
+.breed-info { background: #fff; border: 1px solid #e3e1d8; border-radius: 12px; padding: 16px; margin-bottom: 16px; }
+.breed-info h2 { margin: 0 0 4px; }
+.breed-info a { color: #1b1f2a; font-weight: 600; }
+.grid { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
+.card { background: #fff; border: 1px solid #e3e1d8; border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; }
+.card img { width: 100%; aspect-ratio: 1; object-fit: cover; display: block; }
+.card-footer { display: flex; justify-content: space-between; align-items: center; padding: 8px 12px; }
+.fav { border: 0; background: none; font-size: 22px; color: #b3261e; cursor: pointer; }
+.fav:disabled { opacity: .4; cursor: progress; }
+.load-more { display: block; margin: 24px auto 0; padding: 10px 20px; border: 1px solid #1b1f2a; background: #fff; border-radius: 8px; cursor: pointer; font-weight: 600; }
+@media (max-width: 600px) {
+  header { flex-direction: column; align-items: flex-start; padding: 16px; }
+  main { padding: 16px; }
+  .breed-select { width: 100%; }
+}
