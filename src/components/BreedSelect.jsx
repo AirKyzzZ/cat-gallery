@@ -1,10 +1,20 @@
-export default function BreedSelect({ breeds, breedId, onBreedChange }) {
+export default function BreedSelect({ breeds, breedId, onBreedChange, disabled }) {
   return (
-    <select className="breed-select" value={breedId} onChange={(e) => onBreedChange(e.target.value)}>
-      <option value="">Toutes les races</option>
-      {breeds.map((breed) => (
-        <option key={breed.id} value={breed.id}>{breed.name}</option>
-      ))}
-    </select>
+    <label className="field">
+      <span className="field-label">Race</span>
+      <select
+        className="select"
+        value={breedId}
+        disabled={disabled}
+        onChange={(event) => onBreedChange(event.target.value)}
+      >
+        <option value="">Toutes les races</option>
+        {breeds.map((breed) => (
+          <option key={breed.id} value={breed.id}>
+            {breed.name}
+          </option>
+        ))}
+      </select>
+    </label>
   );
 }

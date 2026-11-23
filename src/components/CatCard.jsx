@@ -1,20 +1,20 @@
-export default function CatCard({ image, favourite, pending, onToggleFavourite }) {
+import FavouriteButton from "./FavouriteButton.jsx";
+
+export default function CatCard({ image, favourite, pending, onToggleFavourite, onOpen }) {
   const breed = image.breeds?.[0];
+  const label = breed ? `Chat ${breed.name}` : "Chat";
   return (
-    <li className="card">
-      <img src={image.url} alt={breed ? `Chat ${breed.name}` : "Chat"} loading="lazy" />
-      <div className="card-footer">
-        <span className="muted">{breed?.name}</span>
-        <button
-          type="button"
-          className={favourite ? "fav active" : "fav"}
-          disabled={pending}
-          aria-label={favourite ? "Retirer des favoris" : "Ajouter aux favoris"}
-          onClick={() => onToggleFavourite(image)}
-        >
-          {favourite ? "♥" : "♡"}
-        </button>
-      </div>
+    <li className="cat-card">
+      <button type="button" className="cat-card-media" onClick={onOpen} aria-label={`Agrandir la photo : ${label}`}>
+        <img src={image.url} alt={label} loading="lazy" decoding="async" />
+        {breed && <span className="cat-card-caption">{breed.name}</span>}
+      </button>
+      <FavouriteButton
+        className="cat-card-fav"
+        favourite={favourite}
+        pending={pending}
+        onToggle={() => onToggleFavourite(image)}
+      />
     </li>
   );
 }

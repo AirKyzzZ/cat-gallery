@@ -1,18 +1,10 @@
 import { useEffect, useState } from "react";
 import { addFavourite, getFavourites, removeFavourite } from "../services/catApi.js";
-
-const SUB_ID_KEY = "cat-gallery:sub-id";
-
-function readSubId() {
-  const saved = localStorage.getItem(SUB_ID_KEY);
-  if (saved) return saved;
-  const created = crypto.randomUUID();
-  localStorage.setItem(SUB_ID_KEY, created);
-  return created;
-}
+import { describeError } from "../utils/errors.js";
+import { getSubId } from "../utils/subId.js";
 
 export default function useFavourites() {
-  const [subId] = useState(readSubId);
+  const [subId] = useState(getSubId);
   const [items, setItems] = useState([]);
   const [pendingIds, setPendingIds] = useState([]);
   const [status, setStatus] = useState("loading");
@@ -28,7 +20,7 @@ export default function useFavourites() {
       })
       .catch((err) => {
         if (ignore) return;
-        setError(err.message);
+        setError(describeError(err));
         setStatus("error");
       });
     return () => {
@@ -38,6 +30,7 @@ export default function useFavourites() {
 
   const isFavourite = (imageId) => items.some((f) => f.image_id === imageId);
   const isPending = (imageId) => pendingIds.includes(imageId);
+  const clearError = () => setError("");
 
   const toggle = async (image) => {
     const existing = items.find((f) => f.image_id === image.id);
@@ -49,14 +42,15 @@ export default function useFavourites() {
         setItems((current) => current.filter((f) => f.id !== existing.id));
       } else {
         const { id } = await addFavourite(image.id, subId);
-        setItems((current) => [{ id, image_id: image.id, image: { id: image.id, url: image.url } }, ...current]);
+        const saved = { id: image.id, url: image.url, breeds: image.breeds };
+        setItems((current) => [{ id, image_id: image.id, image: saved }, ...current]);
       }
     } catch (err) {
-      setError(err.message);
+      setError(describeError(err));
     } finally {
       setPendingIds((ids) => ids.filter((pendingId) => pendingId !== image.id));
     }
   };
 
-  return { items, status, error, isFavourite, isPending, toggle };
+  return { items, status, error, isFavourite, isPending, toggle, clearError };
 }
