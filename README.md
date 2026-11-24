@@ -2,7 +2,7 @@
 
 [![CI](https://github.com/AirKyzzZ/cat-gallery/actions/workflows/ci.yml/badge.svg)](https://github.com/AirKyzzZ/cat-gallery/actions/workflows/ci.yml)
 
-Galerie de chats en React 19 construite sur [TheCatAPI](https://thecatapi.com). Projet final du module DEVE515 « JavaScript et Framework JS », BAC+3 CDA DevFS, EPSI Bordeaux 2026-2027.
+Galerie de chats en React 19 construite sur [TheCatAPI](https://thecatapi.com). Projet du cours React du module DEVE515 « JavaScript et Framework JS », BAC+3 CDA DevFS, EPSI Bordeaux 2026-2027.
 
 ![Galerie](docs/screenshots/galerie.jpg)
 

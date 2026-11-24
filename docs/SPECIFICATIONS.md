@@ -2,7 +2,7 @@
 
 ## Contexte
 
-Cat Gallery est le projet final du module DEVE515. L'objectif est une application React complète qui consomme une API REST réelle ([TheCatAPI](https://developers.thecatapi.com)), avec plusieurs pages, de l'état partagé, des appels réseau robustes, des tests et une chaîne CI/CD.
+Cat Gallery est le projet du cours React du module DEVE515. L'objectif est une application React complète qui consomme une API REST réelle ([TheCatAPI](https://developers.thecatapi.com)), avec plusieurs pages, de l'état partagé, des appels réseau robustes, des tests et une chaîne CI/CD.
 
 ## Utilisateurs visés
 

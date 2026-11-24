@@ -9,7 +9,7 @@ export default function Footer() {
           </a>
         </p>
         <p>
-          Projet final DEVE515 · EPSI Bordeaux ·{" "}
+          Projet DEVE515 · EPSI Bordeaux ·{" "}
           <a href="https://github.com/AirKyzzZ/cat-gallery" target="_blank" rel="noreferrer">
             Code source
           </a>
